@@ -4,6 +4,8 @@ version: "3"
 services:
   db_service:
     image: rajesh177/pyapp:db-image
+    deploy:
+    replicas : 1
     ports:
       - "3306:3306"
     networks:
@@ -13,6 +15,8 @@ services:
     image: rajesh177/pyapp:auth-image
     ports:
       - "5001:5001"
+    deploy:
+      replicas : 1
     networks:
       - mynet
 
@@ -20,6 +24,8 @@ services:
     image: rajesh177/pyapp:book-image
     ports:
       - "5002:5002"
+    deploy:
+      replicas: 1
     networks:
       - mynet
 
@@ -27,13 +33,17 @@ services:
     image: rajesh177/pyapp:borrow-image
     ports:
       - "5003:5003"
+    deploy:
+      replicas : 1 
     networks:
       - mynet
 
   frontend_service:
-    build: rajesh177/pyapp:fe-image
+    image: rajesh177/pyapp:fe-image
     ports:
       - "5000:5000"
+    deploy:
+      replicas : 1  
     networks:
       - mynet
 
