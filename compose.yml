@@ -5,7 +5,7 @@ services:
   db_service:
     image: rajesh177/pyapp:db-image
     deploy:
-    replicas : 1
+      replicas: 1
     ports:
       - "3306:3306"
     networks:
@@ -13,37 +13,37 @@ services:
 
   auth_service:
     image: rajesh177/pyapp:auth-image
+    deploy:
+      replicas: 1
     ports:
       - "5001:5001"
-    deploy:
-      replicas : 1
     networks:
       - mynet
 
   books_service:
     image: rajesh177/pyapp:book-image
-    ports:
-      - "5002:5002"
     deploy:
       replicas: 1
+    ports:
+      - "5002:5002"
     networks:
       - mynet
 
   borrow_service:
     image: rajesh177/pyapp:borrow-image
+    deploy:
+      replicas: 1
     ports:
       - "5003:5003"
-    deploy:
-      replicas : 1 
     networks:
       - mynet
 
   frontend_service:
     image: rajesh177/pyapp:fe-image
+    deploy:
+      replicas: 1
     ports:
       - "5000:5000"
-    deploy:
-      replicas : 1  
     networks:
       - mynet
 
