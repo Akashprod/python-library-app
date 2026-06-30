@@ -1,0 +1,42 @@
+---
+version: "3"
+
+services:
+  db_service:
+    image: rajesh177/pyapp:db-image
+    ports:
+      - "3306:3306"
+    networks:
+      - mynet
+
+  auth_service:
+    image: rajesh177/pyapp:auth-image
+    ports:
+      - "5001:5001"
+    networks:
+      - mynet
+
+  books_service:
+    image: rajesh177/pyapp:book-image
+    ports:
+      - "5002:5002"
+    networks:
+      - mynet
+
+  borrow_service:
+    image: rajesh177/pyapp:borrow-image
+    ports:
+      - "5003:5003"
+    networks:
+      - mynet
+
+  frontend_service:
+    build: rajesh177/pyapp:fe-image
+    ports:
+      - "5000:5000"
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    driver: bridge
