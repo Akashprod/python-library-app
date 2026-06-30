@@ -9,7 +9,7 @@ services:
     ports:
       - "3306:3306"
     networks:
-      - mynet
+      - mynets
 
   auth_service:
     image: rajesh177/pyapp:auth-image
@@ -18,7 +18,7 @@ services:
     ports:
       - "5001:5001"
     networks:
-      - mynet
+      - mynets
 
   books_service:
     image: rajesh177/pyapp:book-image
@@ -27,7 +27,7 @@ services:
     ports:
       - "5002:5002"
     networks:
-      - mynet
+      - mynets
 
   borrow_service:
     image: rajesh177/pyapp:borrow-image
@@ -36,7 +36,7 @@ services:
     ports:
       - "5003:5003"
     networks:
-      - mynet
+      - mynets
 
   frontend_service:
     image: rajesh177/pyapp:fe-image
@@ -45,8 +45,8 @@ services:
     ports:
       - "5000:5000"
     networks:
-      - mynet
+      - mynets
 
 networks:
-  mynet:
+  mynets:
     driver: overlay
